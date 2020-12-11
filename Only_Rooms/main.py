@@ -38,29 +38,22 @@ async def get_all_users():
 async def save_user(user_in_db: UserInDB):
     generator["id_usuario"] = generator["id_usuario"] + 1
     user_in_db.id_usuario = generator["id_usuario"]
-    database_users.add[user_in_db]
+    database_users.append(user_in_db)
     return user_in_db
 
 
-
-@app.put("/users/{id_usuario}")
-
-async def update_user(user_in_db: UserInDB):
-    database_users[user_in_db.id_usuario] = user_in_db
-    return user_in_db
-
-
-'''async def update_user(id_usuario: int):
-    print(user_in_db)
+@app.put("/users/{id_usuario}")      
+async def update_user(id: int, user_in_db: UserInDB):
+    
     try:
-        database_users.id_usuario = user_in_db
-        return database_users.id_usuario
+        database_users[id] = user_in_db
+        return database_users[id]
     
     except:
         raise HTTPException(status_code=404, detail="No existe el usuario")
         
     
-    return user_in_db'''
+    return user_in_db
 
 
 @app.delete("/users/{id_usuario}")

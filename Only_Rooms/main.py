@@ -29,7 +29,7 @@ async def get_room_id(id_habitacion: int):
     return room_out
 
 
-@app.get("/users/", response_model=List[UserInDB], response_model_exclude={"username","password"})
+@app.get("/users/", response_model=Dict[int, UserInDB], response_model_exclude={"username","password"})
 async def get_all_users():
     return database_users
 
@@ -38,7 +38,7 @@ async def get_all_users():
 async def save_user(user_in_db: UserInDB):
     generator["id_usuario"] = generator["id_usuario"] + 1
     user_in_db.id_usuario = generator["id_usuario"]
-    database_users.append(user_in_db)
+    database_users[user_in_db.id_usuario] = user_in_db
     return user_in_db
 
 

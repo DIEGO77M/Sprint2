@@ -13,7 +13,7 @@ class UserInDB(BaseModel):
     password: str
     username: str
     
-database_users = []
+database_users = {}
 generator = {"id_usuario":0}
 
 def update_user(user_in_db: UserInDB):

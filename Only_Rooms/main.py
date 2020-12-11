@@ -42,7 +42,7 @@ async def save_user(user_in_db: UserInDB):
     return user_in_db
 
 
-@app.put("/users/{id_usuario}")      
+@app.put("/users/updateuser/{id_usuario}")      
 async def update_user(id: int, user_in_db: UserInDB):
     
     try:
